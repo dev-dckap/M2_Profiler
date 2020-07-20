@@ -1,0 +1,48 @@
+<?php
+/**
+ * @author     DCKAP
+ * @package    DCKAP_Profiler
+ * @copyright  Copyright (c) 2017 DCKAP Inc (http://www.dckap.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+$Statoutput = $block->getStat();
+$code_alert = $block->getConfigValue('profiler_section/profiler_group_general/timer_alert');
+$block->downloadCSV();
+$columnheader = $block->getOptionalColumnHeader('profiler_section/profiler_group_general/optional_columns');
+$columnvalue = $block->getOptionalColumnValue('profiler_section/profiler_group_general/optional_columns');
+?>
+<table>
+    <thead>
+    <tr>
+        <th>Timer Id</th>
+        <th>Time (ms)</th>
+        <th>Avg (ms)</th>
+        <th>Cnt</th>
+        <?php foreach ($columnheader as $header) { ?>
+            <?php if ($header != 'header') echo "<th>" . $header . "</th>"; ?>
+        <?php } ?>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($Statoutput->getFilteredTimerIds() as $timerId): ?>
+        <tr <?php if ($code_alert) {
+            if ((trim(number_format(($Statoutput->fetch($timerId, 'sum') * 1000), 1, '.', ''))) >= number_format($code_alert, 1, '.', '')) {
+                echo 'class = alert';
+            }
+        } ?>>
+            <td>
+                <?php echo $block->renderTimerId($Statoutput->fetch($timerId, 'id')) ?>
+            </td>
+            <td>
+                <?php echo number_format(($Statoutput->fetch($timerId, 'sum') * 1000), 1, '.', '') ?>
+            </td>
+            <td><?php echo number_format(($Statoutput->fetch($timerId, 'avg') * 1000), 1, '.', '') ?></td>
+            <td><?php echo $Statoutput->fetch($timerId, 'count') ?></td>
+            <?php foreach ($columnvalue as $value) { ?>
+                <?php if ($value != 'value') echo "<td>" . $Statoutput->fetch($timerId, $value) . "</td>"; ?>
+            <?php } ?>
+        </tr>
+    <?php endforeach ?>
+    </tbody>
+</table>

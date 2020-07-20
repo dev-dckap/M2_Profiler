@@ -1,0 +1,41 @@
+.profiler_container {width: 98%;margin: 0 auto;}
+
+h5 {padding: 0;margin: 0;float: left;font-size: 20px;font-weight: normal;margin-top: 20px;}
+
+ul.container-titles {margin: 0;float: left;width: 100%;padding: 0;padding: 0px;border-bottom: 1px solid #c2c2c2;margin-bottom: 20px;}
+
+ul.container-titles li {list-style: none;padding: 10px 20px;margin: 20px 10px 0px 0px;float: left;background-color: #f1f1f1;cursor: pointer;}
+
+ul.container-titles li.active {background-color: #d4d4d4;}
+
+ul.container-titles li:hover {background-color: #d4d4d4;}
+
+.total-server {float: right;position: relative;top: 21px;font-size: 16px;}
+
+.total-server span {margin-right: 10px;color: #1979c3;}
+
+.profile-table table, .mysql-table table{width: 100%;border: 1px solid #c2c2c2;border-top: none;}
+
+.profile-table table tbody tr:nth-child(even), .mysql-table table tbody tr:nth-child(even) {background-color: #f5f5f5;}
+
+.profile-table table thead tr, .mysql-table table thead tr {background-color: #b3b3b3;}
+
+.profile-table table thead tr th, .mysql-table table thead tr th {text-align: center}
+
+.profile-table table thead, .mysql-table table thead {display: table;width: 100%;table-layout: fixed;}
+
+.profile-table table tbody, .mysql-table table tbody {border-bottom: 1px solid #b3b3b3;overflow-y: scroll;max-height: 800px;display: block;}
+
+.profile-table table tbody tr, .mysql-table table tbody tr {border-bottom: 1px solid #b3b3b3; text-align: center}
+
+.profile-table table tbody tr.alert, .mysql-table table tbody tr.alert {background-color: yellow;}
+
+#container_profiler {float: left;width: 100%;}
+
+.profile-table table tbody tr {display: table;width: 100%;table-layout: fixed;}
+
+.profile-table table tbody tr td:first-child, .profile-table table thead tr th:first-child {width: 58%; text-align: left} 
+
+.mysql-table table tbody tr td:last-child, .mysql-table table thead tr th:last-child {text-align: right;width: 170px}
+
+.mysql-table table tbody tr td:first-child, .mysql-table table thead tr th:first-child {text-align: left;width: 170px}
